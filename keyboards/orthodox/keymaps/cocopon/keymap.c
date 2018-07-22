@@ -34,6 +34,77 @@ enum custom_keycodes {
   QWERTY = SAFE_RANGE,
 };
 
+// Tap Dance
+enum taps {
+  _TD_LBR = 0,
+  _TD_RBR
+};
+
+void on_left_bracket_dance_finished(qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    // KC_LPRN
+    register_code(KC_LSFT);
+    register_code(KC_9);
+  } else if (state->count == 2) {
+    // KC_LCBR
+    register_code(KC_LSFT);
+    register_code(KC_LBRC);
+  } else {
+    register_code(KC_LBRC);
+  }
+}
+
+void on_left_bracket_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    // KC_LPRN
+    unregister_code(KC_LSFT);
+    unregister_code(KC_9);
+  } else if (state->count == 2) {
+    // KC_LCBR
+    unregister_code(KC_LSFT);
+    unregister_code(KC_LBRC);
+  } else {
+    unregister_code(KC_LBRC);
+  }
+}
+
+void on_right_bracket_dance_finished(qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    // KC_RPRN
+    register_code(KC_LSFT);
+    register_code(KC_0);
+  } else if (state->count == 2) {
+    // KC_RCBR
+    register_code(KC_LSFT);
+    register_code(KC_RBRC);
+  } else {
+    register_code(KC_RBRC);
+  }
+}
+
+void on_right_bracket_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    // KC_RPRN
+    unregister_code(KC_LSFT);
+    unregister_code(KC_0);
+  } else if (state->count == 2) {
+    // KC_RCBR
+    unregister_code(KC_LSFT);
+    unregister_code(KC_RBRC);
+  } else {
+    unregister_code(KC_RBRC);
+  }
+}
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [_TD_LBR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, on_left_bracket_dance_finished, on_left_bracket_dance_reset),
+  [_TD_RBR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, on_right_bracket_dance_finished, on_right_bracket_dance_reset)
+};
+
+#define TD_LBR TD(_TD_LBR)
+#define TD_RBR TD(_TD_RBR)
+
+
 // Fillers to make layering more clear
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
@@ -47,7 +118,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT( \
     KC_GRV,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                                                       KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC, \
-    ODX_LCTL, KC_A,     KC_S,     KC_D,     KC_F,     KC_G,               KC_PLUS,  KC_LALT,        KC_RALT,  KC_MINS,            KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,  \
+    ODX_LCTL, KC_A,     KC_S,     KC_D,     KC_F,     KC_G,               _______,  KC_LALT,        KC_RALT,  _______,            KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,  \
     KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     LOWER,    KC_SPACE, KC_LGUI,        KC_RGUI,  KC_SPACE, RAISE,    KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  ODX_RSFT \
   ),
   [_LOWER] = LAYOUT( \
@@ -61,9 +132,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   _______,  KC_ESC,   KC_ESC,         KC_ESC,   KC_ESC,   _______,  KC_F12,   KC_PGUP,  KC_COMM,  KC_DOT,   _______,  KC_QUOT  \
   ),
   [_ADJUST] = LAYOUT( \
-    RESET,    _______,  _______,  _______,  KC_LPRN,  _______,                                                                    _______,  KC_RPRN,  _______,  _______,  _______,  RESET,   \
-    _______,  _______,  _______,  _______,  KC_LCBR,  _______,            _______,  _______,        _______,  _______,            _______,  KC_RCBR,  _______,  _______,  _______,  _______, \
-    _______,  _______,  _______,  _______,  KC_LBRC,  _______,  _______,  _______,  _______,        _______,  _______,  _______,  _______,  KC_RBRC,  _______,  _______,  _______,  _______  \
+    RESET,    _______,  _______,  _______,  _______,  _______,                                                                    _______,  _______,  _______,  _______,  _______,  RESET,   \
+    _______,  _______,  _______,  _______,  TD_LBR,   _______,            _______,  _______,        _______,  _______,            _______,  TD_RBR,   _______,  _______,  _______,  _______, \
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  \
   )
 };
 
