@@ -49,11 +49,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 200
 
 /* Mouse keys configuration */
-#define MOUSEKEY_DELAY             100
+#define MOUSEKEY_DELAY             0
+#define MOUSEKEY_MOVE_DELTA        10
 #define MOUSEKEY_INTERVAL          10
 #define MOUSEKEY_MAX_SPEED         2
-#define MOUSEKEY_TIME_TO_MAX       20
+#define MOUSEKEY_TIME_TO_MAX       40
+#define MOUSEKEY_WHEEL_DELTA       1
+#define MOUSEKEY_WHEEL_MAX         1
 #define MOUSEKEY_WHEEL_MAX_SPEED   1
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 100
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 255
 
 #endif
