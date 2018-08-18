@@ -50,7 +50,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Mouse keys configuration */
 #define MOUSEKEY_DELAY             0
-#define MOUSEKEY_MOVE_DELTA        10
+#define MOUSEKEY_MOVE_DELTA        8
 #define MOUSEKEY_INTERVAL          10
 #define MOUSEKEY_MAX_SPEED         2
 #define MOUSEKEY_TIME_TO_MAX       40
