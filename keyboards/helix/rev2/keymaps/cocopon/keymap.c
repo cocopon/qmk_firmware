@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_GRV,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                         KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_QUOT, \
       M_LCTL,   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,                         KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,  \
       KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                         KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  M_RSFT,  \
-      _______,  _______,  KC_LALT,  KC_LGUI,  LOWER,    KC_LGUI,  KC_SPC,   KC_SPC,   KC_RGUI,  RAISE,    KC_RALT,  _______,  _______,  _______  \
+      _______,  _______,  _______,  KC_LALT,  LOWER,    KC_LGUI,  KC_SPC,   KC_SPC,   KC_RGUI,  RAISE,    KC_RALT,  _______,  _______,  _______  \
       ),
 
   /* Lower */
@@ -174,9 +174,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Adjust (Lower + Raise) */
   [_ADJUST] =  LAYOUT( \
       RESET,    _______,  _______,  _______,  KC_WH_U,  _______,                      _______,  _______,  _______,  _______,  _______,  RESET,    \
-      _______,  _______,  _______,  _______,  KC_WH_D,  _______,                      KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  KC_UP,    _______,  \
-      RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,  KC_BTN1,                      KC_BTN2,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_RIGHT, \
-      RGB_SMOD, RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______   \
+      _______,  _______,  _______,  _______,  KC_WH_D,  _______,                      KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  _______,  _______,  \
+      RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,  KC_BTN1,                      KC_BTN2,  _______,  _______,  _______,  KC_UP,    _______, \
+      RGB_SMOD, RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_RIGHT  \
       ),
 };
 
